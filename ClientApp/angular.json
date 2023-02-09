@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TodoPlanner": {
+    "AngularTodo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "TodoPlanner:build:production"
+              "browserTarget": "AngularTodo:build:production"
             },
             "development": {
-              "browserTarget": "TodoPlanner:build:development",
+              "browserTarget": "AngularTodo:build:development",
               "proxyConfig": "proxy.conf.js"
             }
           },
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TodoPlanner:build"
+            "browserTarget": "AngularTodo:build"
           }
         },
         "test": {
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "TodoPlanner"
+  "defaultProject": "AngularTodo"
 }

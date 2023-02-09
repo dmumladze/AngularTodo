@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TodoPlanner.Data.Context;
-using TodoPlanner.Data.Entities;
+using AngularTodo.Data.Context;
+using AngularTodo.Data.Entities;
 
-namespace TodoPlanner.Data.Repositiory
+namespace AngularTodo.Data.Repositiory
 {
 	public interface IApiRepository : IDisposable
 	{

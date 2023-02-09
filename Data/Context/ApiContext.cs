@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TodoPlanner.Data.Entities;
+using AngularTodo.Data.Entities;
 
-namespace TodoPlanner.Data.Context;
+namespace AngularTodo.Data.Context;
 
 public class ApiContext : DbContext
 {

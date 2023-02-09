@@ -1,4 +1,4 @@
-﻿namespace TodoPlanner.Models;
+﻿namespace AngularTodo.Models;
 
 public class ProjectModel
 {

@@ -1,11 +1,11 @@
 {
-  "name": "todoplanner",
-  "version": "0.0.0",
+  "name": "AngularTodo",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 44455",
     "build": "ng build",
-    "build:ssr": "ng run TodoPlanner:server:dev",
+    "build:ssr": "ng run AngularTodo:server:dev",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

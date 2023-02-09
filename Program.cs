@@ -2,12 +2,12 @@ using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using TodoPlanner.Data.Context;
-using TodoPlanner.Data.Repositiory;
-using TodoPlanner.Hubs;
-using TodoPlanner.Services;
+using AngularTodo.Data.Context;
+using AngularTodo.Data.Repositiory;
+using AngularTodo.Hubs;
+using AngularTodo.Services;
 
-namespace TodoPlanner;
+namespace AngularTodo;
 
 public class Program
 {

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Hangfire;
 using Microsoft.AspNetCore.SignalR;
-using TodoPlanner.Data.Entities;
-using TodoPlanner.Data.Repositiory;
-using TodoPlanner.Hubs;
-using TodoPlanner.Models;
+using AngularTodo.Data.Entities;
+using AngularTodo.Data.Repositiory;
+using AngularTodo.Hubs;
+using AngularTodo.Models;
 
-namespace TodoPlanner.Services
+namespace AngularTodo.Services
 {
 	public interface ITodoService
 	{

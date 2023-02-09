@@ -1,4 +1,4 @@
-﻿namespace TodoPlanner.Data.Entities;
+﻿namespace AngularTodo.Data.Entities;
 
 public class ProjectEntity
 {

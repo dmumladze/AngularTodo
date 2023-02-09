@@ -38,12 +38,16 @@ body {
     width: 50% !important;
 }*/
 
-.link-active-projects {
-    border-bottom: 2px double #396dc2;
-}
-
 .link-active-todos {
     border-bottom: 2px double #f59d05;
+}
+
+.link-active-projects {
+	border-bottom: 2px double #396dc2;
+}
+
+.link-active-home {
+	border-bottom: 2px double #777;
 }
 
 .mdc-text-field--filled {

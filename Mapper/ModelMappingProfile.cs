@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using TodoPlanner.Data.Entities;
-using TodoPlanner.Models;
+using AngularTodo.Data.Entities;
+using AngularTodo.Models;
 
-namespace TodoPlanner.Mapper
+namespace AngularTodo.Mapper
 {
 	public class ModelMappingProfile : Profile
 	{

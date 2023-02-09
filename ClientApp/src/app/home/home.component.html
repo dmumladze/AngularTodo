@@ -1,1 +1,97 @@
-<h2>Home</h2>
+<div class="jumbotron">
+	<h1>YOUR TODO</h1>
+	<div class="lead">YOUR TODO is a simple todo list application built by you utilizing the technologies you choose. You are the author, we only have a few requirements that are outlined below.</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<h2>Step 1: Getting started</h2>
+		<div>
+			First thing we want you to do is to set the application name for the above menu, you can choose to call this whatever you want! Make sure you update the menu and the name in the jumbotron to match!
+		</div>
+	</div>
+	<div class="col-md-4">
+		<h2>Step 2: TODO items</h2>
+		<div>Create a dedicated page for viewing and interacting with TODO items.</div>
+
+		<div>
+			Expectation:
+			<ul>
+				<li>All CRUD based operations should be present.</li>
+				<li>Entry forms with required inputs for all data to be captured.</li>
+				<li>Menu item/link to this new page.</li>
+			</ul>
+		</div>
+
+		<div>
+			Minimum data to capture:<br />
+			<ul>
+				<li><code>todo [ id, title, description, completed ]</code></li>
+			</ul>
+		</div>
+
+	</div>
+	<div class="col-md-4">
+		<h2>Step 3: TODO filtering</h2>
+		<div>Here we want a page that can show off your skills by filtering on a set of data within a grid/table in some manner.</div>
+
+		<div>
+			Expectation:
+			<ul>
+				<li>Single text input (button optional) at the top of the page with a grid/table below that is filtered across all displayed columns.</li>
+				<li>If using a button, expecation is to filter when pressing it. Otherwise, if no button, then filter when typing in the text input as the user is typing.</li>
+				<li>Menu item/link to this new page.</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>FAQ</h2>
+		<div>
+			<ul class="faqul">
+				<li>
+					Can we use a 3rd party grid for the filtering and display?
+					<br />
+					Answer: Nope, we're not looking for anything fancy, we're more concerned with your ability to simply make it function.
+				</li>
+				<li>
+					Regarding TODO filtering (Step 3)
+					Since we're using MVC, can we filter by posting back to the page?
+					<br />
+					Answer: Nope, we're looking specifically for your ability to filter the data utilizing a non-MVC solution. (Hint, hint... Client-side technologies)
+				</li>
+				<li>
+					What about CSS and styling?
+					<br />
+					Answer: No specific requirements, however, we would expect good standard practices to be followed.
+				</li>
+
+				<li>
+					Do we need to worry about authorization?
+					<br />
+					Answer: No this can be accessed by anyone that can hit the website.
+				</li>
+
+				<li>
+					Do I need to use a database?
+					<br />
+					Answer: No, this can all be performed by an in-memory data structure of your choosing, just keep in mind anything entered via the CRUD screen (Step 2) should be available for filtering (Step 3).
+				</li>
+
+				<li>
+					Can I use a database?
+					<br />
+					Answer: Yes, provided you are utilizing something that can be rebuilt on a new machine directly from this project, for example Entity Framework code first would be a valid option for this approach.
+				</li>
+
+				<li>
+					Can I do more than this?
+					<br />
+					Answer: Sure, this is your chance to show us what you're capable of, but this is not required.
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

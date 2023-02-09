@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "TodoPlanner": {
+    "AngularTodo": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5252",

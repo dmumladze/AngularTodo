@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TodoPlanner.Models;
-using TodoPlanner.Services;
+using AngularTodo.Models;
+using AngularTodo.Services;
 
-namespace TodoPlanner.Controllers;
+namespace AngularTodo.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]

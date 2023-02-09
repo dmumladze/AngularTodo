@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace TodoPlanner.Hubs
+namespace AngularTodo.Hubs
 {
 	public class ApiHub : Hub
 	{
