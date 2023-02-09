@@ -22,7 +22,7 @@
 }
 
 .project-line-flash {
-    animation: flash 1s;
+    animation: flash 1.5s;
 }
 
 @keyframes flash {

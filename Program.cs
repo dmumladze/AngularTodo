@@ -6,6 +6,7 @@ using AngularTodo.Data.Context;
 using AngularTodo.Data.Repositiory;
 using AngularTodo.Hubs;
 using AngularTodo.Services;
+using AngularTodo.Jobs;
 
 namespace AngularTodo;
 
@@ -59,6 +60,7 @@ public class Program
 		builder.Services.AddScoped<IApiRepository, ApiRepository>();
 		builder.Services.AddScoped<ITodoService, TodoService>();
 		builder.Services.AddScoped<IProjectService, ProjectService>();
+		builder.Services.AddScoped<IReminderSetupJob, ReminderSetupJob>();
 
 		var app = builder.Build();
 		
@@ -82,6 +84,8 @@ public class Program
 		app.UseHangfireDashboard();
 		app.MapFallbackToFile("index.html");
 
+		app.SetupReminders();
+
 		app.Run();
-	}
+	}	
 }

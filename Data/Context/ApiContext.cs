@@ -24,11 +24,25 @@ public class ApiContext : DbContext
 		modelBuilder.Entity<ProjectEntity>().HasData(
 			new ProjectEntity
 			{
+				ProjectEntityId = 2,
+				Title = "Organize Charity for Veterans",				
+				CreatedDate = DateTime.Now,
+				RemindDate= DateTime.Now.AddMinutes(1)
+			},
+			new ProjectEntity
+			{
+				ProjectEntityId = 3,
+				Title = "Prepare for Summer Adventure",				
+				CreatedDate = DateTime.Now				
+			},
+			new ProjectEntity
+			{
 				ProjectEntityId = 1,
 				Title = "Build Adventure Bike",
 				Description = "For surveying TET Georgia route",
 				CreatedDate = DateTime.Now,
 				DueDate = DateTime.Now.AddMonths(1),
+				RemindDate = DateTime.Now.AddMinutes(2)
 			});
 		modelBuilder.Entity<ProjectEntity>().HasMany(b => b.Todos).WithOne(p => p.Project)
 			.HasForeignKey(p => p.ProjectEntityId)
@@ -87,7 +101,8 @@ public class ApiContext : DbContext
 			new TodoEntity
 			{
 				TodoEntityId = 7,
-				Title = "Fix Chimney"
+				Title = "Fix Chimney",
+				RemindDate = DateTime.Now.AddMinutes(2)
 			},
 			new TodoEntity
 			{
@@ -118,6 +133,43 @@ public class ApiContext : DbContext
 				TodoEntityId = 12,
 				Title = "Check Toma's Homework",
 				CreatedDate = DateTime.Now
+			},
+			new TodoEntity
+			{
+				TodoEntityId = 13,
+				ProjectEntityId = 2,
+				Title = "Talk to Chuck and him friends",
+				CreatedDate = DateTime.Now,
+				RemindDate = DateTime.Now.AddMinutes(2)
+			},
+			new TodoEntity
+			{
+				TodoEntityId = 14,
+				ProjectEntityId = 2,
+				Title = "Setup GoFundMe",
+				CreatedDate = DateTime.Now
+			},
+			new TodoEntity
+			{
+				TodoEntityId = 15,
+				ProjectEntityId = 3,
+				Title = "Look for AirBnb Houses",
+				CreatedDate = DateTime.Now
+			},
+			new TodoEntity
+			{
+				TodoEntityId = 16,
+				ProjectEntityId = 3,
+				Title = "Learn some Spanish",
+				CreatedDate = DateTime.Now
+			},
+			new TodoEntity
+			{
+				TodoEntityId = 17,
+				ProjectEntityId = 3,
+				Title = "Reserve Side by Sides for 3 adults",
+				CreatedDate = DateTime.Now,
+				RemindDate = DateTime.Now.AddMinutes(1)
 			}
 		);
 	}
