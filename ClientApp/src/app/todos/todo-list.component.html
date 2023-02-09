@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="input-group mb-3">
+            <button class="btn btn-primary" type="button" (click)="create()">
+                <mat-icon>post_add</mat-icon>
+                <span>Add New</span>
+            </button>
+            <input type="text" [(ngModel)]="todoTitle" class="form-control" placeholder="I'm going to...">
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="project-title">
+            <h2>{{projectTitle}}</h2>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <button mat-icon-button class="btn btn-light" [matMenuTriggerFor]="sortMenu" title="Sort To-dos By">
+            <mat-icon>sort</mat-icon>            
+        </button>
+        <mat-menu #sortMenu="matMenu">
+            <button mat-menu-item (click)="sortByDueDate()">
+                <mat-icon>edit_calendar</mat-icon>
+                <span>Due date</span>
+            </button>
+            <button mat-menu-item (click)="sortByRemindDate()">
+                <mat-icon>alarm</mat-icon>
+                <span>Remind date</span>
+            </button>
+            <button mat-menu-item (click)="sortByCreationDate()">
+                <mat-icon>post_add</mat-icon>
+                <span>Creation date</span>
+            </button>
+            <button mat-menu-item (click)="sortAlphabetically()">
+                <mat-icon>sort_by_alpha</mat-icon>
+                <span>Alphabetically</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>
+<hr class="divider-hr mt-1 mb-3" />
+<div class="row">
+    <div class="col-md-3" *ngFor="let todo of todos">
+        <todo-details [todo]="todo" [color]="color" [events]="eventsSubject.asObservable()" (onUpdate)="update(todo)" (onDelete)="delete(todo)"></todo-details>
+    </div>
+</div>

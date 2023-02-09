@@ -1,0 +1,119 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="input-group mb-3">
+            <button class="btn btn-primary" type="button" (click)="create()">
+                <mat-icon>post_add</mat-icon>
+                <span>Add New</span>
+            </button>
+            <input type="text" [(ngModel)]="projectTitle" class="form-control" placeholder="I need a project to...">
+        </div>
+    </div>
+    <div class="col-md-1 offset-5">
+        <button class="btn btn-light" [matMenuTriggerFor]="sortMenu" title="Sort Projects By">
+            <mat-icon>sort</mat-icon>            
+        </button>
+        <mat-menu #sortMenu="matMenu">
+            <button mat-menu-item (click)="sortByDueDate()">
+                <mat-icon>edit_calendar</mat-icon>
+                <span>Due date</span>
+            </button>
+            <button mat-menu-item (click)="sortByRemindDate()">
+                <mat-icon>alarm</mat-icon>
+                <span>Remind date</span>
+            </button>
+            <button mat-menu-item (click)="sortByCreationDate()">
+                <mat-icon>post_add</mat-icon>
+                <span>Creation date</span>
+            </button>
+            <button mat-menu-item (click)="sortAlphabetically()">
+                <mat-icon>sort_by_alpha</mat-icon>
+                <span>Alphabetically</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>
+<hr class="divider-hr mt-1 mb-1" />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover" #container>
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Title</td>
+                    <td>Due On</td>
+                    <td>Remind On</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projects" id="{{project.id}}">
+                    <td>{{project.id}}</td>
+                    <td #container>
+                        <input type="text" class="form-control project-title" [(ngModel)]="project.title">
+                    </td>
+                    <td>
+                        <mat-form-field subscriptSizing="dynamic">
+                            <input matInput [ngxMatDatetimePicker]="dueDate" [min]="dueMinDate" placeholder="-" [(ngModel)]="project.dueDate">
+                            <mat-datepicker-toggle [disableRipple]="false" matSuffix [for]="$any(dueDate)"></mat-datepicker-toggle>
+                            <ngx-mat-datetime-picker #dueDate [showSpinners]="true" [showSeconds]="false" [touchUi]="false"
+                                                     [enableMeridian]="true" [disableMinute]="false" [hideTime]="false">
+                            </ngx-mat-datetime-picker>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field subscriptSizing="dynamic">
+                            <input matInput [ngxMatDatetimePicker]="reminder" [min]="remindMinDate" placeholder="-" [(ngModel)]="project.remindDate">
+                            <mat-datepicker-toggle [disableRipple]="false" matSuffix [for]="$any(reminder)"></mat-datepicker-toggle>
+                            <ngx-mat-datetime-picker #reminder [showSpinners]="true" [showSeconds]="false" [stepSecond]="30" [touchUi]="false"
+                                                     [enableMeridian]="true" [disableMinute]="false" [hideTime]="false">
+                            </ngx-mat-datetime-picker>
+                        </mat-form-field>
+                    </td>
+                    <td align="right">
+                        <button class="btn btn-primary" type="button" title="Save" (click)="update(project)">
+                            <mat-icon>save</mat-icon>
+                        </button>
+                        &nbsp;
+                        <button [matMenuTriggerFor]="deleteMenu" class="btn btn-danger" type="button" title="Delete forver">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <mat-menu #deleteMenu="matMenu" [hasBackdrop]="true">
+                            <table cellpadding="0" width="275">
+                                <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                                    <td colspan="2" align="center">
+                                        Sure you want to delete the project?
+                                    </td>
+                                </tr>
+                                <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                                    <td colspan="2"><hr class="mt-1 mb-1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="menu-item-td">
+                                        <div class="d-grid gap-2 p-2">
+                                            <button class="btn btn-primary" type="button" (click)="delete(project.id)">
+                                                <mat-icon>thumb_up</mat-icon>
+                                                <span>Yes</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="menu-item-td">
+                                        <div class="d-grid gap-2 p-2">
+                                            <button class="btn btn-warning" type="button">
+                                                <mat-icon>warning_amber</mat-icon>
+                                                <span>No&nbsp;</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </mat-menu>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-light more-button" title="Manage To-dos" [routerLink]="['/projects', project.id]">
+                            <mat-icon>view_module</mat-icon>                            
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

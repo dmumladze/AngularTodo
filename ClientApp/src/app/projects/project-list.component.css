@@ -1,0 +1,41 @@
+
+.table td {
+    vertical-align: middle;
+}
+
+.project-title {
+    line-height: 55px;
+    padding: 0 2px 0 2px;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #949494;
+    background-color: transparent;
+}
+
+.project-title:focus, .project-title:hover {
+    border-bottom: 1px solid #1e1e1e;
+    background-color: #e4e4e4;
+}
+
+.more-button {
+    border: 1px solid #949494;
+}
+
+.project-line-flash {
+    animation: flash 1s;
+}
+
+@keyframes flash {
+    from {
+        background-color: #87a4b1;
+    }
+    to {
+        background-color: inherit;
+    }
+}
+
+.divider-hr {
+    background-color: #c8c9ca;
+}
+
+

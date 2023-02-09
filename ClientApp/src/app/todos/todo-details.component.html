@@ -1,0 +1,98 @@
+
+<div class="sticky-container mb-3" id="{{todo.id}}" #container>
+    <div class="sticky-outer">
+        <div class="sticky-header">
+            <button mat-icon-button [matMenuTriggerFor]="settingsMenu" class="mat-icon-button shadow-sm rounded menu-save-button" title="Open Settings">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #settingsMenu="matMenu" [hasBackdrop]="true">
+                <table cellpadding="0">
+                    <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                        <td class="menu-icon-td"><mat-icon>edit_calendar</mat-icon></td>
+                        <td class="menu-item-td">
+                            <mat-form-field>
+                                <input matInput [ngxMatDatetimePicker]="dueDate" [min]="dueMinDate" placeholder="Due On" [(ngModel)]="todo.dueDate">
+                                <mat-datepicker-toggle [disableRipple]="false" matSuffix [for]="$any(dueDate)"></mat-datepicker-toggle>
+                                <ngx-mat-datetime-picker #dueDate [showSpinners]="true" [showSeconds]="false" [touchUi]="false"
+                                                         [enableMeridian]="true" [disableMinute]="false" [hideTime]="false">
+                                </ngx-mat-datetime-picker>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                        <td class="menu-icon-td"><mat-icon>alarm</mat-icon></td>
+                        <td class="menu-item-td">
+                            <mat-form-field>
+                                <input matInput [ngxMatDatetimePicker]="reminder" [min]="remindMinDate" placeholder="Remind On" [(ngModel)]="todo.remindDate">
+                                <mat-datepicker-toggle [disableRipple]="false" matSuffix [for]="$any(reminder)"></mat-datepicker-toggle>
+                                <ngx-mat-datetime-picker #reminder [showSpinners]="true" [showSeconds]="false" [stepSecond]="30" [touchUi]="false"
+                                                         [enableMeridian]="true" [disableMinute]="false" [hideTime]="false">
+                                </ngx-mat-datetime-picker>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr class="menu-item-skip-tr" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"></tr>
+                    <tr>
+                        <td class="menu-item-td" colspan="2">
+                            <div class="d-grid gap-2 p-2">
+                                <button class="btn btn-primary menu-item-icon-button" type="button" (click)="update()">
+                                    <mat-icon>save</mat-icon>
+                                    <span>Save</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </mat-menu>
+            <button [matMenuTriggerFor]="doneMenu" class="mat-icon-button shadow-sm rounded menu-complete-button" title="Mark as Done">
+                <mat-icon>done</mat-icon>
+            </button>
+            <mat-menu #doneMenu="matMenu" [hasBackdrop]="true">
+                <table cellpadding="0" width="275">
+                    <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                        <td class="menu-item-message" colspan="2" align="center">
+                            Are you sure the task is completed?
+                        </td>
+                    </tr>
+                    <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                        <td colspan="2"><hr class="mt-1 mb-1" /></td>
+                    </tr>
+                    <tr>
+                        <td class="menu-item-td">
+                            <div class="d-grid gap-2 p-2">
+                                <button class="btn btn-primary menu-item-icon-button" type="button" (click)="delete()">
+                                    <mat-icon>thumb_up</mat-icon>
+                                    <span>Yes</span>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="menu-item-td">
+                            <div class="d-grid gap-2 p-2">
+                                <button class="btn btn-warning menu-item-icon-button" type="button">
+                                    <mat-icon>thumb_down</mat-icon>
+                                    <span>No&nbsp;</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </mat-menu>
+        </div>
+        <div class="sticky">
+            <svg width="0" height="0">
+                <defs>
+                    <clipPath id="stickyClip" clipPathUnits="objectBoundingBox">
+                        <path d="M 0 0 Q 0 0.69, 0.03 0.96 0.03 0.96, 1 0.96 Q 0.96 0.69, 0.96 0 0.96 0, 0 0"
+                              stroke-linejoin="round"
+                              stroke-linecap="square" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <div class="sticky-content sticky-content-{{color}}" editable="true" [(ngModel)]="todo.title">
+            </div>
+        </div>
+        <div class="sticky-footer">
+        </div>
+    </div>
+</div>
+

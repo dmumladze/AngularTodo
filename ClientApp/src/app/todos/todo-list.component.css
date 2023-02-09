@@ -1,0 +1,15 @@
+
+div:has(> .project-title) {
+    display: table;    
+}
+
+.project-title {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.divider-hr {
+    background-color: #c8c9ca;
+}
+
+

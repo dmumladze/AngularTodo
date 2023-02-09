@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+code {
+    color: #e01a76;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*.mat-mdc-form-field {
+    display: block !important;
+    width: 50% !important;
+}*/
+
+.link-active-projects {
+    border-bottom: 2px double #396dc2;
+}
+
+.link-active-todos {
+    border-bottom: 2px double #f59d05;
+}
+
+.mdc-text-field--filled {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.mat-datepicker-toggle .mat-mdc-button-base {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.mat-mdc-menu-panel {
+    max-width: unset !important;
+}
+
+.mat-icon-button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 10%;
+    color: #222;
+    height: 25px !important;
+    line-height: 25px !important;
+    width: 33px !important;
+    padding: 0 !important;
+}
+
+#toast-container > .ngx-toastr {
+    width: 400px;
+}
