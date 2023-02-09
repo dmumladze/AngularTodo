@@ -15,6 +15,7 @@ public interface IProjectService
 	Task<ProjectModel> Create(ProjectModel model);
 	Task Update(int id, ProjectModel model);
 	Task Delete(int id);
+	Task<IList<ProjectModel>> Search(string term);
 }
 
 public class ProjectService : IProjectService
@@ -126,6 +127,13 @@ public class ProjectService : IProjectService
 			_logger.LogError($"Failed to delete to-do {id}.", ex);
 			throw;
 		}
+	}
+
+	public async Task<IList<ProjectModel>> Search(string term)
+	{
+		var projects = await _repo.SearchProjects(term);
+		var models = _mapper.Map<IList<ProjectModel>>(projects);
+		return models;
 	}
 
 	[JobDisplayName("Project: {1} ({0})")]

@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SearchService } from '../services/search.service';
 import { Project } from '../shared/Project';
 import { ProjectService } from './project.service';
 
@@ -9,16 +10,18 @@ import { ProjectService } from './project.service';
     templateUrl: './project-list.component.html',
     styleUrls: ['./project-list.component.css']
 })
-export class ProjectsComponent implements OnInit, AfterViewInit {
+export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy
+{
 
-    private fragmentsSubscription: Subscription;
+	private fragmentSub: Subscription;
+	private searchSub: Subscription;
 
     public projectTitle: string;
     public projects: Project[] = [];
 
     @ViewChild('container') container: ElementRef;
 
-    constructor(private projectService: ProjectService, private route: ActivatedRoute) {
+	constructor(private projectService: ProjectService, private route: ActivatedRoute, private searchService: SearchService) {
     }
 
     ngOnInit(): void {
@@ -29,12 +32,19 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
                 this.projects = sorted;
             },
             error => console.error(error)
-        );
+		);
+		if (!this.searchSub) {
+			this.searchSub = this.searchService.termChanged.subscribe(
+				(term: string) => {
+					this.search(term);
+				}
+			);
+		}
     }
 
     ngAfterViewInit(): void {
-        if (!this.fragmentsSubscription) {
-            this.fragmentsSubscription = this.route.fragment.subscribe(
+        if (!this.fragmentSub) {
+            this.fragmentSub = this.route.fragment.subscribe(
                 fragment => {
                     if (!fragment) {
                         return;
@@ -50,7 +60,28 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
                 }
             );
         }
-    }
+	}
+
+	ngOnDestroy(): void {
+		if (this.fragmentSub) {
+			this.fragmentSub.unsubscribe();
+		}
+		if (this.searchSub) {
+			this.searchSub.unsubscribe();
+		}
+	}
+
+	private search(term: string) {
+		this.projectService.search(term).subscribe(
+			data => {
+				let sorted = data.sort((a, b) => a.createdDate < b.createdDate ? 0 : -1);
+				this.projects = sorted;
+			},
+			error => {
+				console.error(error)
+			}
+		);
+	}
 
     public create() {
         if (this.projectTitle && this.projectTitle.trim()) {

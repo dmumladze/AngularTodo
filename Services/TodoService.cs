@@ -14,6 +14,7 @@ namespace AngularTodo.Services
 		Task<TodoModel> Create(TodoModel model);
 		Task Update(int id, TodoModel model);
 		Task Delete(int id);
+		Task<IList<TodoModel>> Search(string term, int? projectId);
 	}
 
 	public class TodoService : ITodoService
@@ -125,6 +126,13 @@ namespace AngularTodo.Services
 				_logger.LogError($"Failed to delete to-do {id}.", ex);
 				throw;
 			}
+		}
+
+		public async Task<IList<TodoModel>> Search(string term, int? projectId)
+		{
+			var todos  =  await _repo.SearchTodos(term, projectId);
+			var models = _mapper.Map<IList<TodoModel>>(todos);
+			return models;
 		}
 
 		[JobDisplayName("To-do: {1} ({0})")]				

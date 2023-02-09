@@ -29,5 +29,10 @@ export class TodoService {
 
     public delete(id: number): Observable<Object> {
         return this.http.delete(this.baseUrl + `api/v1/todos/${id}`);
-    }
+	}
+
+	public search(term: string, projectId: number): Observable<Todo[]> {
+		let data = { term: term, projectId: projectId || '' };
+		return this.http.get<Todo[]>(this.baseUrl + 'api/v1/todos/search', { params: data });
+	}
 }

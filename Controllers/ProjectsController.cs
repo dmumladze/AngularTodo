@@ -85,4 +85,18 @@ public class ProjectsController : ControllerBase
 			return BadRequest();
 		}
 	}
+
+	[HttpGet("search")]
+	public async Task<IActionResult> Search(string term)
+	{
+		try
+		{
+			var model = await _service.Search(term);
+			return Ok(model);
+		}
+		catch
+		{
+			return BadRequest();
+		}
+	}
 }

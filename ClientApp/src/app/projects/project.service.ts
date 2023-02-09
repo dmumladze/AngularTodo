@@ -33,5 +33,10 @@ export class ProjectService {
 
     public delete(id: number): Observable<Object> {
         return this.http.delete(this.baseUrl + `api/v1/projects/${id}`);
-    }
+	}
+
+	public search(term: string): Observable<Project[]> {
+		let data = { term: term };
+		return this.http.get<Project[]>(this.baseUrl + 'api/v1/projects/search', { params: data });
+	}
 }

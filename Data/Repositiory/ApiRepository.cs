@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using AngularTodo.Data.Context;
 using AngularTodo.Data.Entities;
+using AngularTodo.Models;
 
 namespace AngularTodo.Data.Repositiory
 {
@@ -16,6 +17,8 @@ namespace AngularTodo.Data.Repositiory
 		Task<IList<TodoEntity>> GetAllTodos();
 		Task Update(TodoEntity todo);
 		Task Update(ProjectEntity project);
+		Task<IList<TodoEntity>> SearchTodos(string term, int? projectId);
+		Task<IList<ProjectEntity>> SearchProjects(string term);
 	}
 
 	public class ApiRepository : IApiRepository, IDisposable
@@ -94,6 +97,19 @@ namespace AngularTodo.Data.Repositiory
 		{
 			_context.Entry(project).State = EntityState.Modified;
 			await _context.SaveChangesAsync();
+		}
+
+		public async Task<IList<TodoEntity>> SearchTodos(string term, int? projectId = null)
+		{
+			return await _context.Todos.Where(p =>
+					(term == null || p.Title.ToLower().Contains(term)) && p.ProjectEntityId == projectId)?
+				.ToListAsync();
+		}
+
+		public async Task<IList<ProjectEntity>> SearchProjects(string term)
+		{
+			return await _context.Projects.Where(p => (term == null || p.Title.ToLower().Contains(term)))?
+				.ToListAsync();
 		}
 
 		protected virtual void Dispose(bool disposing)

@@ -1,0 +1,10 @@
+
+.search-container {
+	display: table;
+	width: 100%;
+}
+
+.search-container search-box {
+	display: table-cell;
+	vertical-align: middle;
+}

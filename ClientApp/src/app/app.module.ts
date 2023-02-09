@@ -26,6 +26,7 @@ import { ProjectDetailsComponent } from './projects/project-details.component';
 import { ProjectDetailsResolver } from './projects/project-details.resolver';
 import { ProjectsComponent } from './projects/project-list.component';
 import { ProjectListResolver } from './projects/project-list.resolver';
+import { SearchComponent } from './shared/search.component';
 import { TodoDetailsComponent } from './todos/todo-details.component';
 import { TodoListComponent } from './todos/todo-list.component';
 import { TodoListResolver } from './todos/todo-list.resolver';
@@ -69,7 +70,8 @@ const routerOptions: ExtraOptions = {
         TodoDetailsComponent,
         TodoListComponent,
         ProjectDetailsComponent,
-        ProjectsComponent
+		ProjectsComponent,
+		SearchComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

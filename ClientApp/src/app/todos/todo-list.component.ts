@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
+import { SearchService } from '../services/search.service';
 import { Project } from '../shared/Project';
 import { Todo } from '../shared/Todo';
 import { TodoService } from './todo.service';
@@ -10,9 +11,10 @@ import { TodoService } from './todo.service';
     templateUrl: './todo-list.component.html',
     styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit, AfterViewInit {
+export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    private fragmentsSubscription: Subscription;
+	private fragmentSub: Subscription;
+	private searchSub: Subscription;
 
     @Input()
     public todos: Todo[] = [];
@@ -31,31 +33,59 @@ export class TodoListComponent implements OnInit, AfterViewInit {
     @Input()
     eventsSubject: Subject<string>;
 
-    constructor(private todoService: TodoService, private route: ActivatedRoute) {
+	constructor(private todoService: TodoService, private route: ActivatedRoute, private searchService: SearchService) {
         this.eventsSubject = new Subject<string>();
-    }
+	}
 
-    ngOnInit(): void {
-        this.route.data.subscribe(
-            (data: any) => {
-                let todos = data['todos'] as Todo[];
-                let sorted = todos.sort((a, b) => a.createdDate < b.createdDate ? 0 : -1);
-                this.todos = sorted;
-            },
-            error => console.error(error)
-        );
+	ngOnInit(): void {
+		this.route.data.subscribe(
+			(data: any) => {
+				let todos = data['todos'] as Todo[];
+				let sorted = todos.sort((a, b) => a.createdDate < b.createdDate ? 0 : -1);
+				this.todos = sorted;
+			},
+			error => console.error(error)
+		);
+		if (!this.searchSub) {
+			this.searchSub = this.searchService.termChanged.subscribe(
+				(term: string) => {
+					this.search(term);
+				}
+			);
+		}
     }
 
     ngAfterViewInit(): void {
-        if (!this.fragmentsSubscription) {
-            this.fragmentsSubscription = this.route.fragment.subscribe(
+        if (!this.fragmentSub) {
+            this.fragmentSub = this.route.fragment.subscribe(
                 fragment => {
                     if (fragment)
                         this.eventsSubject.next(fragment);
                 }
             );
         }
-    }
+	}
+
+	ngOnDestroy(): void {
+		if (this.fragmentSub) {
+			this.fragmentSub.unsubscribe();			
+		}
+		if (this.searchSub) {
+			this.searchSub.unsubscribe();
+		}
+	}
+
+	private search(term: string) {
+		this.todoService.search(term, this.project?.id).subscribe(
+			data => {				
+				let sorted = data.sort((a, b) => a.createdDate < b.createdDate ? 0 : -1);
+				this.todos = sorted;
+			},
+			error => {
+				console.error(error)
+			}
+		);
+	}
 
     public create() {
         if (this.todoTitle && this.todoTitle.trim()) {

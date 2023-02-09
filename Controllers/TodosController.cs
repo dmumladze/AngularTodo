@@ -71,4 +71,18 @@ public class TodosController : ControllerBase
 			return BadRequest();
 		}
 	}
+
+	[HttpGet("search")]
+	public async Task<IActionResult> Search(string term, int? projectId)
+	{
+		try
+		{
+			var model = await _service.Search(term, projectId);
+			return Ok(model);
+		}
+		catch
+		{
+			return BadRequest();
+		}
+	}
 }
