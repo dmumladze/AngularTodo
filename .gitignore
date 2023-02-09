@@ -180,6 +180,7 @@ ClientBin/
 orleans.codegen.cs
 
 
+ClientApp/dist
 ClientApp/.angular
 ClientApp/node_modules
 
