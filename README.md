@@ -9,7 +9,7 @@ This is a sample Angular application for managing To-do tasks using .NET Core an
 - SignalR
 - Hangfire (Dashboard: `http://localhost:5252/hangfire/jobs/scheduled`)
 
-## Running (local)
+## How to Run Locally
 Note: Launching the app could take a few minutes at the first run.
 - git clone `https://github.com/dmumladze/AngularTodo.git`
 - cd AngularTodo
