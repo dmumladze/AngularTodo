@@ -25,9 +25,6 @@ export class TodoListComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input()
     color: string = "yellow"
 
-    @Input()
-    projectTitle: string
-
     public todoTitle: string;
 
     @Input()
