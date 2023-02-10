@@ -69,49 +69,53 @@
                             </ngx-mat-datetime-picker>
                         </mat-form-field>
                     </td>
-                    <td align="right">
-                        <button class="btn btn-primary" type="button" title="Save" (click)="update(project)">
-                            <mat-icon>save</mat-icon>
-                        </button>
-                        &nbsp;
-                        <button [matMenuTriggerFor]="deleteMenu" class="btn btn-danger" type="button" title="Delete forver">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                        <mat-menu #deleteMenu="matMenu" [hasBackdrop]="true">
-                            <table cellpadding="0" width="275">
-                                <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
-                                    <td colspan="2" align="center">
-                                        Sure you want to delete the project?
-                                    </td>
-                                </tr>
-                                <tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
-                                    <td colspan="2"><hr class="mt-1 mb-1" /></td>
-                                </tr>
-                                <tr>
-                                    <td class="menu-item-td">
-                                        <div class="d-grid gap-2 p-2">
-                                            <button class="btn btn-primary" type="button" (click)="delete(project.id)">
-                                                <mat-icon>thumb_up</mat-icon>
-                                                <span>Yes</span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td class="menu-item-td">
-                                        <div class="d-grid gap-2 p-2">
-                                            <button class="btn btn-warning" type="button">
-                                                <mat-icon>warning_amber</mat-icon>
-                                                <span>No&nbsp;</span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </mat-menu>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-light more-button" title="Manage To-dos" [routerLink]="['/projects', project.id]">
-                            <mat-icon>view_module</mat-icon>                            
-                        </button>
-                    </td>
+					<td align="right">
+						<div class="command-button-container">
+							<button class="btn btn-light more-button" title="Manage To-dos" [routerLink]="['/projects', project.id]">
+								<mat-icon>view_module</mat-icon>
+							</button>
+						</div>
+						<div class="command-button-container">
+							<button [matMenuTriggerFor]="deleteMenu" class="btn btn-danger" type="button" title="Delete forver">
+								<mat-icon>delete</mat-icon>
+							</button>
+							<mat-menu #deleteMenu="matMenu" [hasBackdrop]="true">
+								<table cellpadding="0" width="275">
+									<tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+										<td colspan="2" align="center">
+											Sure you want to delete the project?
+										</td>
+									</tr>
+									<tr (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+										<td colspan="2"><hr class="mt-1 mb-1" /></td>
+									</tr>
+									<tr>
+										<td class="menu-item-td">
+											<div class="d-grid gap-2 p-2">
+												<button class="btn btn-primary" type="button" (click)="delete(project.id)">
+													<mat-icon>thumb_up</mat-icon>
+													<span>Yes</span>
+												</button>
+											</div>
+										</td>
+										<td class="menu-item-td">
+											<div class="d-grid gap-2 p-2">
+												<button class="btn btn-warning" type="button">
+													<mat-icon>warning_amber</mat-icon>
+													<span>No&nbsp;</span>
+												</button>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</mat-menu>
+						</div>
+						<div class="command-button-container">
+							<button class="btn btn-primary" type="button" title="Save" (click)="update(project)">
+								<mat-icon>save</mat-icon>
+							</button>
+						</div>
+					</td>
                 </tr>
             </tbody>
         </table>

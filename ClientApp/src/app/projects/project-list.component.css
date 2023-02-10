@@ -38,4 +38,9 @@
     background-color: #c8c9ca;
 }
 
+.command-button-container {
+	float: right;
+	margin: 3px;
+}
+
 

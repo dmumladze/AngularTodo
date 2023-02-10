@@ -34,7 +34,7 @@ body {
 }
 
 .container {
-	min-width: 1200px;
+	/*min-width: 1200px;*/
 }
 
 /*.mat-mdc-form-field {
