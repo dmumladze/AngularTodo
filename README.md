@@ -1,6 +1,6 @@
 ﻿# Angular To-do Application
 
-This is a sample Angular application for managing To-do tasks using .NET Core and Angualat technologies.
+This is a sample Angular application for managing To-do tasks using .NET Core and Angualar technologies.
 
 ## Dependencies
 - .NET Core 6
